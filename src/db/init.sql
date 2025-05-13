@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS category;
+
+
+CREATE TABLE IF NOT EXISTS category (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS product (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price NUMERIC(10, 2) NOT NULL,
+    category_id INTEGER REFERENCES category (id) ON DELETE SET NULL
+);
